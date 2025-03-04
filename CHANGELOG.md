@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2025-03-04
+
+**Bug Fixes**
+
+- Ensure the ESM module import path is correct ([f406028](https://github.com/opcotech/gulp-s3-upload/commit/f406028c025a556aa9802ff1e871790394856f92))
+
 ## [1.0.1] - 2025-03-04
 
 **Bug Fixes**

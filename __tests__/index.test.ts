@@ -1,10 +1,10 @@
-import S3Uploader from "../src/index";
-import { S3Client, HeadObjectCommand } from "@aws-sdk/client-s3";
+import { HeadObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
-import File from "vinyl";
-import { Readable } from "stream";
 import * as fs from "fs";
-import eventStream from "event-stream";
+import { Readable } from "stream";
+import File from "vinyl";
+
+import S3Uploader from "../src/index";
 
 // Mock for S3Client
 const mockS3Send = jest.fn().mockImplementation((command) => {
@@ -422,7 +422,8 @@ describe("gulp-s3-upload", () => {
       const s3Stream = uploader({
         bucket: "test-bucket",
         maps: {
-          CacheControl: (keyname: string) => `max-age=${cacheDays(keyname) * 86400}`,
+          CacheControl: (keyname: string) =>
+            `max-age=${cacheDays(keyname) * 86400}`,
         },
       });
 

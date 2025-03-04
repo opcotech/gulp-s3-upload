@@ -50,7 +50,7 @@
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "prepare": "npm run build",
-    "lint": "eslint src --ext .ts",
+    "lint": "eslint src __tests__ --ext .ts",
     "test": "jest --verbose --no-cache",
     "watch": "rollup -c -w",
     "format": "prettier --write .",

@@ -1,7 +1,7 @@
 {
   "name": "@opcotech/gulp-s3-upload",
   "description": "A gulp task to asynchronous upload/update assets to an AWS S3 Bucket.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -37,7 +37,7 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.esm.js",
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }

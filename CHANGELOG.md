@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file.
 
 **Miscellaneous Tasks**
 
-- Ensure linter executed for tests too ([9db32f7](https://github.com/opcotech/gulp-s3-upload/commit/9db32f71d80d0a329e3a7ea3a27d6cb414047f40))
+- Ensure linter executed for tests too ([eb2b553](https://github.com/opcotech/gulp-s3-upload/commit/eb2b5530812af96467ce469d82a2488fd72f0d2b))
 
 ## [1.0.0] - 2025-03-04
 

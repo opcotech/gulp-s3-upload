@@ -6,4 +6,4 @@ All notable changes to this project will be documented in this file.
 
 **Features**
 
-- Initial implementation ([d0307ee](https://github.com/opcotech/gulp-s3-upload/commit/d0307ee5bde9d1c1236bca477c12e4c71b40a543))
+- Initial implementation ([0df8eba](https://github.com/opcotech/gulp-s3-upload/commit/0df8eba7ff2644e200e59ab7e436267c40ba9a29))

@@ -5,6 +5,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "declaration": true,
+    "declarationDir": "./dist",
     "outDir": "./dist",
     "strict": true,
     "skipLibCheck": true

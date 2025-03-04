@@ -17,6 +17,26 @@ export default {
       sourcemap: true,
     },
   ],
-  external: ["event-stream", "@aws-sdk/client-s3", "@aws-sdk/lib-storage", "mime", "hasha", "plugin-error", "fancy-log", "ansi-colors", "path"],
-  plugins: [typescript({ tsconfig: "./tsconfig.json" }), nodeResolve(), commonjs(), terser()],
+  external: [
+    "event-stream",
+    "@aws-sdk/client-s3",
+    "@aws-sdk/lib-storage",
+    "mime",
+    "hasha",
+    "plugin-error",
+    "fancy-log",
+    "ansi-colors",
+    "path",
+  ],
+  plugins: [
+    typescript({
+      tsconfig: "./tsconfig.json",
+      declaration: true,
+      declarationDir: "./dist",
+      rootDir: "./src",
+    }),
+    nodeResolve(),
+    commonjs(),
+    terser(),
+  ],
 };

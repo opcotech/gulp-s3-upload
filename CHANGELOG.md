@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2025-08-05
+
+**Miscellaneous Tasks**
+
+- Bump dependencies ([8ff23f8](https://github.com/opcotech/gulp-s3-upload/commit/8ff23f84a8edb4bd5527814d55abdbe56ecf609d))
+
+**Refactor**
+
+- Add exact support for endpoint ([31aae6d](https://github.com/opcotech/gulp-s3-upload/commit/31aae6d456252125386d046e584f3a1db562cc1f))
+
 ## [1.0.2] - 2025-03-04
 
 **Bug Fixes**

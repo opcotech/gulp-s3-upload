@@ -38,6 +38,8 @@ interface S3Credentials extends AwsCredentialIdentity {
 
 interface S3Config {
   region?: string;
+  endpoint?: string;
+  forcePathStyle?: boolean;
   [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 

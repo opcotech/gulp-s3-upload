@@ -99,6 +99,56 @@ describe("gulp-s3-upload", () => {
         uploader({});
       }).toThrow("Missing S3 bucket name!");
     });
+
+    test("should create uploader with custom endpoint for LocalStack", () => {
+      S3Uploader(
+        {
+          accessKeyId: "test",
+          secretAccessKey: "test",
+        },
+        {
+          endpoint: "http://localhost:4566",
+          forcePathStyle: true,
+        },
+      );
+
+      expect(S3Client).toHaveBeenCalledWith(
+        expect.objectContaining({
+          endpoint: "http://localhost:4566",
+          forcePathStyle: true,
+          credentials: expect.objectContaining({
+            accessKeyId: "test",
+            secretAccessKey: "test",
+          }),
+        }),
+      );
+    });
+
+    test("should create uploader with custom S3 configuration", () => {
+      S3Uploader(
+        {
+          accessKeyId: "custom-key",
+          secretAccessKey: "custom-secret",
+        },
+        {
+          region: "us-west-2",
+          endpoint: "http://localhost:9000",
+          forcePathStyle: false,
+        },
+      );
+
+      expect(S3Client).toHaveBeenCalledWith(
+        expect.objectContaining({
+          region: "us-west-2",
+          endpoint: "http://localhost:9000",
+          forcePathStyle: false,
+          credentials: expect.objectContaining({
+            accessKeyId: "custom-key",
+            secretAccessKey: "custom-secret",
+          }),
+        }),
+      );
+    });
   });
 
   describe("file processing", () => {

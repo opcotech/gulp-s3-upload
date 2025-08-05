@@ -42,6 +42,66 @@ This plugin requires AWS credentials. You can provide them in several ways:
     });
     ```
 
+## LocalStack Support
+
+For development and testing purposes, you can use LocalStack to simulate AWS S3 locally. The plugin supports LocalStack through standard S3 configuration options:
+
+### Basic LocalStack Usage
+
+```javascript
+const s3 = s3Upload(
+    {
+        accessKeyId: "test",
+        secretAccessKey: "test",
+    },
+    {
+        endpoint: "http://localhost:4566",
+        forcePathStyle: true,
+    },
+);
+```
+
+### Custom LocalStack Configuration
+
+```javascript
+const s3 = s3Upload(
+    {
+        accessKeyId: "custom-key",
+        secretAccessKey: "custom-secret",
+    },
+    {
+        endpoint: "http://localhost:9000", // Custom endpoint
+        forcePathStyle: false, // Custom path style setting
+        region: "us-east-1",
+    },
+);
+```
+
+### LocalStack with IAM
+
+```javascript
+const s3 = s3Upload(
+    {
+        useIAM: true,
+    },
+    {
+        endpoint: "http://localhost:4566",
+        forcePathStyle: true,
+    },
+);
+```
+
+**Common LocalStack Settings:**
+- Endpoint: `http://localhost:4566` (default LocalStack port)
+- Force Path Style: `true` (recommended for LocalStack)
+- Credentials: `accessKeyId: "test"`, `secretAccessKey: "test"` (LocalStack defaults)
+
+**Benefits of this approach:**
+- No special LocalStack-specific options required
+- Works with any S3-compatible service (LocalStack, MinIO, etc.)
+- Uses standard AWS SDK v3 configuration patterns
+- Maintains full backward compatibility
+
 ## Basic Usage
 
 ```javascript
@@ -95,6 +155,48 @@ gulp.src("./dist/images/**/*.{jpg,png,gif}").pipe(
         },
     }),
 );
+```
+
+### Development vs Production Configuration
+
+```javascript
+import gulp from "gulp";
+import s3Upload from "@opcotech/gulp-s3-upload";
+
+// Development configuration with LocalStack
+const s3Dev = s3Upload(
+    {
+        accessKeyId: "test",
+        secretAccessKey: "test",
+    },
+    {
+        endpoint: "http://localhost:4566",
+        forcePathStyle: true,
+    },
+);
+
+// Production configuration with AWS
+const s3Prod = s3Upload({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION,
+});
+
+export function uploadAssetsDev() {
+    return gulp.src("./dist/**/*").pipe(
+        s3Dev({
+            Bucket: "my-dev-bucket",
+        }),
+    );
+}
+
+export function uploadAssetsProd() {
+    return gulp.src("./dist/**/*").pipe(
+        s3Prod({
+            Bucket: "my-production-bucket",
+        }),
+    );
+}
 ```
 
 ## License
